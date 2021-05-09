@@ -9,17 +9,7 @@
         android:id="@+id/fragment_breaking_news"
         android:name="com.example.newsappyt.ui.breakingNews.BreakingNewsFragment"
         android:label="@string/title_breaking_news"
-        tools:layout="@layout/fragment_breaking_news" >
-        <action
-            android:id="@+id/action_fragment_breaking_news_to_fragment_favourite_news"
-            app:destination="@id/fragment_favourite_news" />
-        <action
-            android:id="@+id/action_fragment_breaking_news_to_fragment_favourite_news2"
-            app:destination="@id/fragment_favourite_news" />
-        <action
-            android:id="@+id/action_fragment_breaking_news_to_fragment_search_news"
-            app:destination="@id/fragment_search_news" />
-    </fragment>
+        tools:layout="@layout/fragment_breaking_news" />
 
 
 
@@ -27,27 +17,13 @@
         android:id="@+id/fragment_favourite_news"
         android:name="com.example.newsappyt.ui.favouriteNews.FavouriteNewsFragment"
         android:label="@string/title_fav_news"
-        tools:layout="@layout/fragment_favourite_news" >
-        <action
-            android:id="@+id/action_fragment_favourite_news_to_fragment_breaking_news"
-            app:destination="@id/fragment_breaking_news" />
-        <action
-            android:id="@+id/action_fragment_favourite_news_to_fragment_search_news"
-            app:destination="@id/fragment_search_news" />
-    </fragment>
+        tools:layout="@layout/fragment_favourite_news" />
 
     <fragment
         android:id="@+id/fragment_search_news"
         android:name="com.example.newsappyt.ui.searchNews.SearchNewsFragment"
         android:label="@string/title_search_news"
-        tools:layout="@layout/fragment_search_news" >
-        <action
-            android:id="@+id/action_fragment_search_news_to_fragment_favourite_news"
-            app:destination="@id/fragment_favourite_news" />
-        <action
-            android:id="@+id/action_fragment_search_news_to_fragment_breaking_news"
-            app:destination="@id/fragment_breaking_news" />
-    </fragment>
+        tools:layout="@layout/fragment_search_news" />
 
 
 

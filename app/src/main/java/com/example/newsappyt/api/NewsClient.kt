@@ -14,6 +14,6 @@ class NewsClient
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
-    val api:NewsApi = retrofit.create(NewsApi::class.java)
+    val newsApi:NewsApi = retrofit.create(NewsApi::class.java)
 
 }

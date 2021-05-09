@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
-@Entity(tableName = "ArticleTable")
+@Entity(tableName = "FavouriteArticles")
 
 @JsonClass(generateAdapter = true)
 data class Article(
