@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsappyt.R
@@ -19,14 +20,14 @@ import kotlin.math.log
 class BreakingNewsFragment : Fragment()
 {
     val TAG = "1234"
-    var binding:FragmentBreakingNewsBinding? = null
-    val newsViewModel:NewsViewModel by viewModels()
+    private var binding:FragmentBreakingNewsBinding? = null
+    private val newsViewModel:NewsViewModel by viewModels()
     private var newsAdapter:NewsAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         binding = FragmentBreakingNewsBinding.inflate(inflater,container,false)
-
+        newsAdapter = NewsAdapter()
         setupRecyclerView(binding?.recyclerViewBreakingNews)
 
         newsViewModel.breakingNews.observe({lifecycle})
@@ -50,25 +51,35 @@ class BreakingNewsFragment : Fragment()
             } // when closed
         } // breaking new observer closed
 
+
+        newsAdapter?.setOnCLickListener ()
+        {
+
+            val action = BreakingNewsFragmentDirections.actionFragmentBreakingNewsToArticleFragment(it)
+            findNavController().navigate(action)
+        }
+
+
+
         return binding?.root
     }
 
     private fun hideProgressBar()
     {
-        binding?.progressBar?.visibility = View.GONE
+        binding?.progressBarBreakingNews?.visibility = View.GONE
     }
 
 
     private fun showProgressBar()
     {
-        binding?.progressBar?.visibility = View.VISIBLE
+        binding?.progressBarBreakingNews?.visibility = View.VISIBLE
     }
 
 
 
     private fun setupRecyclerView(recyclerView: RecyclerView?)
     {
-        newsAdapter = NewsAdapter()
+
         recyclerView?.apply()
         {
 

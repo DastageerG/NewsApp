@@ -27,8 +27,11 @@ class MainActivity : AppCompatActivity()
 
     } // onCreate closed
 
-    val string = "\"https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=303fff6aaf4a44ba801f2d5fc8324b3a\""
-    val s2 = "https://newsapi.org/v2/top_headlines?country=us&category=business&apiKey=303fff6aaf4a44ba801f2d5fc8324b3a"
+    override fun onSupportNavigateUp(): Boolean
+    {
+        val navigationController = findNavController(R.id.nav_host_fragment)
+        return navigationController.navigateUp() || super.onSupportNavigateUp()
+    }
 } // MainActivity closed
 
 

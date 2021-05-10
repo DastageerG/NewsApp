@@ -9,7 +9,11 @@
         android:id="@+id/fragment_breaking_news"
         android:name="com.example.newsappyt.ui.breakingNews.BreakingNewsFragment"
         android:label="@string/title_breaking_news"
-        tools:layout="@layout/fragment_breaking_news" />
+        tools:layout="@layout/fragment_breaking_news" >
+        <action
+            android:id="@+id/action_fragment_breaking_news_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
 
 
 
@@ -17,14 +21,39 @@
         android:id="@+id/fragment_favourite_news"
         android:name="com.example.newsappyt.ui.favouriteNews.FavouriteNewsFragment"
         android:label="@string/title_fav_news"
-        tools:layout="@layout/fragment_favourite_news" />
+        tools:layout="@layout/fragment_favourite_news" >
+        <action
+            android:id="@+id/action_fragment_favourite_news_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_search_news"
         android:name="com.example.newsappyt.ui.searchNews.SearchNewsFragment"
         android:label="@string/title_search_news"
-        tools:layout="@layout/fragment_search_news" />
-
+        tools:layout="@layout/fragment_search_news" >
+        <action
+            android:id="@+id/action_fragment_search_news_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.newsappyt.ui.articalFragment.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" >
+        <action
+            android:id="@+id/action_articleFragment_to_fragment_search_news"
+            app:destination="@id/fragment_search_news" />
+        <action
+            android:id="@+id/action_articleFragment_to_fragment_breaking_news"
+            app:destination="@id/fragment_breaking_news" />
+        <action
+            android:id="@+id/action_articleFragment_to_fragment_favourite_news"
+            app:destination="@id/fragment_favourite_news" />
+        <argument
+            android:name="article"
+            app:argType="com.example.newsappyt.model.Article" />
+    </fragment>
 
 
 </navigation>

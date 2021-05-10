@@ -1,18 +1,22 @@
 package com.example.newsappyt.model
 
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
 @Entity(tableName = "FavouriteArticles")
 
+
 @JsonClass(generateAdapter = true)
+
 data class Article(
 
-    @PrimaryKey(autoGenerate = true)
-    val id:Int?,
+    @PrimaryKey(autoGenerate = true) var id:Int?,
     @Json(name = "author")
     val author: String?,
     @Json(name = "content")
@@ -29,4 +33,4 @@ data class Article(
     val url: String,
     @Json(name = "urlToImage")
     val urlToImage: String?
-)
+) : Serializable
