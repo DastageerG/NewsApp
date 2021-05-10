@@ -12,4 +12,6 @@ data class NewsResponse(
     val status: String,
     @Json(name = "totalResults")
     val totalResults: Int
+
+
 )

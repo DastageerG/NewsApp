@@ -6,14 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsappyt.R
 import com.example.newsappyt.databinding.FragmentBreakingNewsBinding
 import com.example.newsappyt.databinding.FragmentSearchNewsBinding
 import com.example.newsappyt.ui.adapter.NewsAdapter
+import com.example.newsappyt.ui.favouriteNews.FavouriteNewsFragmentDirections
 import com.example.newsappyt.utils.Constants
 import com.example.newsappyt.utils.Resource
 import com.example.newsappyt.viewmodel.NewsViewModel
@@ -62,7 +65,8 @@ class SearchNewsFragment : Fragment()
                 is Resource.Error ->
                 {
                     hideProgressBar()
-                    Log.d(TAG, "onCreateView: "+response.data)
+                    Log.d(TAG, "onCreateView: "+response.message)
+                    Toast.makeText(context,response.message, Toast.LENGTH_LONG).show()
                 }// Resource Error block closed
                 is Resource.Success->
                 {
@@ -74,6 +78,14 @@ class SearchNewsFragment : Fragment()
                 } // Resource Success block closed
             } // when closed
         } // search new observer closed
+
+        newsAdapter?.setOnCLickListener ()
+        {
+
+            val action = SearchNewsFragmentDirections.actionFragmentSearchNewsToArticleFragment(it)
+            findNavController().navigate(action)
+        }
+
 
 
       return  binding?.root

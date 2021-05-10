@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.SnapHelper
 import com.example.newsappyt.databinding.FragmentFavouriteNewsBinding
 import com.example.newsappyt.model.Article
 import com.example.newsappyt.ui.adapter.NewsAdapter
+import com.example.newsappyt.ui.breakingNews.BreakingNewsFragmentDirections
 import com.example.newsappyt.viewmodel.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -41,6 +43,15 @@ class FavouriteNewsFragment : Fragment()
                 newsAdapter?.submitList(articleList)
             } // list closed
         } // observer closed
+
+
+        newsAdapter?.setOnCLickListener ()
+        {
+
+            val action = FavouriteNewsFragmentDirections.actionFragmentFavouriteNewsToArticleFragment(it)
+            findNavController().navigate(action)
+        }
+
 
 
         return binding?.root

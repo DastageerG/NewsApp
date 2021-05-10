@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,7 +39,8 @@ class BreakingNewsFragment : Fragment()
                 is Resource.Error ->
                 {
                     hideProgressBar()
-                    Log.d(TAG, "onCreateView: "+response.data)
+                    Log.d(TAG, "onCreateView: "+response.message)
+                    Toast.makeText(context,response.message,Toast.LENGTH_LONG).show()
                 }// Resource Error block closed
                     is Resource.Success->
                     {
